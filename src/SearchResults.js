@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import Search from './components/Search'
 
 const SearchResults = () => {
   const [searchData, setSearchData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [resultPages, setResultPages] = useState([])
+  const [currentPage, setCurrentPage] = useState(1)
 
   let { query, page } = useParams()
   // let resultPages
@@ -34,28 +36,26 @@ const SearchResults = () => {
 
   return (
     <div>
+      <Search value={query}></Search>
       <div>
         {loading ? <p>loading</p> :
           <div>
             {searchData.results.map((result) => {
-              return (
-                <p>{result.title || result.name}</p>
-              )
+              if (result.media_type === 'movie') return <p><Link to={`/movies/${result.id}`}>{result.title}</Link></p>
+              if (result.media_type === 'tv') return <p><Link to={`/tvshows/${result.id}`}>{result.name}</Link></p>
+              else return <p>{result.name}</p>
             })}
             {searchData.total_pages > 1 ? <div>
+              <span>
               {
-                // Array.from(Array(parseInt(searchData.total_pages)).keys())
-                resultPages.map((page)=>{
+                
+                resultPages.map((pageNum)=>{
                   return(
-                    <Link to={`/search/${query}/${page+1}`}>{page+1}</Link>
+                    <span> <Link to={`/search/${query}/${pageNum+1}`}>{pageNum+1}</Link> </span>
                   )
                 })
               }
-              {/* {searchData.total_pages.map((page) => {
-                return(
-                  <p>here</p>
-                )
-              })} */}
+              </span>
             </div> : <p></p>}
           </div>
         }
