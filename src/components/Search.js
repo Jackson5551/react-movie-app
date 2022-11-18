@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import useTMDB from '../hooks/useTMDB'
 
 const Search = ({value}) => {
@@ -23,14 +23,11 @@ const Search = ({value}) => {
     return (
         <div>
             <div>
-                {value 
-                ? <input type={'text'} onChange={(e) => setQuery(e.target.value)} value={value}></input> 
-                : <input type={'text'} onChange={(e) => setQuery(e.target.value)}></input>
-                }
+                <input type={'text'} onChange={(e) => setQuery(e.target.value)}></input>
                 
                 {/* <button onClick={() => search()}>Go</button> */}
                 {/* <Link to={`search/${query}/${resultsPage}`}>Go</Link> */}
-                <Link to={`search/${query}/1`}>Go</Link>
+                <Link to={`/search/${query}/1`}>Go</Link>
             </div>
             {/* <div>
                 {loading ? <p>loading</p> : 

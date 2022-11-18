@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
 import Movie from './Movie';
 import Show from './Show';
 import SearchResults from './SearchResults';
+import Results from './components/Results';
 
 const router = createBrowserRouter([
   {
@@ -13,7 +14,8 @@ const router = createBrowserRouter([
   },
   {
     path:"/search/:query/:page",
-    element: <SearchResults></SearchResults>
+    // element: <SearchResults></SearchResults>
+    element: <Results></Results>
   },
   {
     path:"/movies/:movieId",

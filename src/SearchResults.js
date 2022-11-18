@@ -30,7 +30,7 @@ const SearchResults = () => {
 
   useEffect(()=>{
     search()
-  },[page])
+  },[query,page])
 
 
 
