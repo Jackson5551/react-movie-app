@@ -6,6 +6,7 @@ import Movie from './Movie';
 import Show from './Show';
 import SearchResults from './SearchResults';
 import Results from './components/Results';
+import './index.css'
 
 const router = createBrowserRouter([
   {

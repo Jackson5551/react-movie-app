@@ -1,16 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import SearchResult from './SearchResult'
 
 const renderData = (data) => {
     return (
-        <ul>
-            {data.results.map((result) => {
-                if (result.media_type === 'movie') return <li><Link to={`/movies/${result.id}`}>{result.title}</Link></li>
-                if (result.media_type === 'tv') return <li><Link to={`/tvshows/${result.id}`}>{result.name}</Link></li>
-                else return <li>{result.name}</li>
-            })}
-        </ul>
+        // <ul>
+        //     {data.results.map((result) => {
+        //         if (result.media_type === 'movie') return <li><Link to={`/movies/${result.id}`}>{result.title}</Link></li>
+        //         if (result.media_type === 'tv') return <li><Link to={`/tvshows/${result.id}`}>{result.name}</Link></li>
+        //         else return <li>{result.name}</li>
+        //     })}
+        // </ul>
+        <SearchResult results={data.results}></SearchResult>
     )
 }
 
@@ -61,7 +63,7 @@ const Pagination = (props) => {
 
     return (
         <div>
-            <div>
+            <div className=''>
                 {renderData(searchData)}
             </div>
             <ul>
