@@ -18,6 +18,8 @@ const Movie = () => {
         fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&locale=US`)
             .then((res) => res.json())
             .then((json) => { setCredits(json); console.log(json) })
+
+        
     }, [])
     const {
         adult,
@@ -49,6 +51,8 @@ const Movie = () => {
 
     let backdropImageUrl = `https://image.tmdb.org/t/p/original${backdrop_path}`
     let posterImageUrl = `https://image.tmdb.org/t/p/w500${poster_path}`
+
+    document.title = movieData.title ? movieData.title : 'Movie'
     return (
         <div
             style={{
@@ -57,8 +61,8 @@ const Movie = () => {
                 'backgroundAttachment': 'fixed'
             }}
             className="w-full h-full bg-center bg-cover bg-no-repeat bg-fixed">
-            <div className='backdrop-blur-lg bg-slate-800/50 p-3'>
-                <div className='flex h-full w-full'>
+            <div className='backdrop-blur-lg bg-slate-800/50 p-3 h-full'>
+                <div className='flex h-full w-full min-h-[50vh]'>
                     <div>
                         {/* <p>{tagline}</p> */}
                         {/* <img src={`https://image.tmdb.org/t/p/w500${poster_path}`}
@@ -74,31 +78,31 @@ const Movie = () => {
                     </div>
                     <div className='flex-col ml-2 w-full'>
                         <div className='text-slate-400 bg-slate-800 p-5 h-fit mb-2'>
-                            <span><h1 className="text-4xl text-white">{title}</h1><p className='italic'>{tagline}</p></span>
+                            <span><a href={homepage} target='_blank'><h1 className="text-4xl text-white hover:text-blue-600">{title}</h1></a><p className='italic'>{tagline}</p></span>
                             {/* <p>{release_date}</p> */}
                             <p>{overview}</p>
                         </div>
                         {watchProviders ?
                             <div className='h-fit p-5 text-white flex-col'>
-                                <h1>Buy</h1>
+                                {watchProviders.buy && <h1>Buy</h1>}
                                 <div className='flex h-fit p-1 flex-wrap'>
-                                {watchProviders.buy.map(provider => {
+                                {watchProviders.buy?.map(provider => {
                                     return (
                                         <img src={`https://image.tmdb.org/t/p/original${provider.logo_path}`} className='rounded-2xl w-12 m-1'></img>
                                     )
                                 })}
                                 </div>
-                                <h1>Subscription</h1>
+                                {watchProviders.flatrate && <h1>Subscription</h1>}
                                 <div className='flex h-fit p-1 flex-wrap'>
-                                {watchProviders.flatrate.map(provider => {
+                                {watchProviders.flatrate?.map(provider => {
                                     return (
                                         <img src={`https://image.tmdb.org/t/p/original${provider.logo_path}`} className='rounded-2xl w-12 m-1'></img>
                                     )
                                 })}
                                 </div>
-                                <h1>Rent</h1>
+                                {watchProviders.rent && <h1>Rent</h1>}
                                 <div className='flex h-fit p-1 flex-wrap'>
-                                {watchProviders.rent.map(provider => {
+                                {watchProviders.rent?.map(provider => {
                                     return (
                                         <img src={`https://image.tmdb.org/t/p/original${provider.logo_path}`} className='rounded-2xl w-12 m-1'></img>
                                     )

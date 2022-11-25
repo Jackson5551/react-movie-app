@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 
 const SearchResult = ({ results }) => {
     const { query, page } = useParams()
+    document.title = `Results for '${query}'`
     return (
         // <Link>
         <div className='w-full h-full bg-slate-800'>
