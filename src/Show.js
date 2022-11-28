@@ -129,13 +129,13 @@ const Show = () => {
             </div>
           </div>
           <div className='h-full w-full bg-'>
-            {seasons ? <div className='flex justify-center text-center bg-slate-800 m-2'>
-              <div className='m-1 bg-slate-800'>
+            {seasons ? <div className='flex justify-center text-center bg-slate-800/50 m-2'>
+              <div className='m-1'>
                 <h1 className='text-white'>Seasons</h1>
-                <div className='flex flex-wrap bg-slate-800 justify-center'>
+                <div className='flex flex-wrap justify-center'>
                   {seasons.map(season => {
                     return (
-                      <div className='m-1 bg-slate-800 p-1 flex-col text-white'>
+                      <div className='m-1 p-1 flex-col text-white'>
                         <p>Season {season.season_number}</p>
                         {season.poster_path && <img alt={`Season ${season.season_number}`} src={`https://image.tmdb.org/t/p/original${season.poster_path}`} className='w-32'></img>}
                         <p>{season.episode_count} Episodes</p>

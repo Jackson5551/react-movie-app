@@ -16,8 +16,8 @@ const Movie = () => {
             .then((res) => res.json())
             .then((json) => { setMovieData(json); console.log(json) })
         fetch(`https://api.themoviedb.org/3/movie/${movieId}/release_dates?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`)
-        .then((res)=>res.json())
-        .then((json)=> {setContentRatings(json.results); console.log(json.results)})
+            .then((res) => res.json())
+            .then((json) => { setContentRatings(json.results); console.log(json.results) })
         fetch(`https://api.themoviedb.org/3/movie/${movieId}/watch/providers?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&locale=US`)
             .then((res) => res.json())
             .then((json) => { setWatchProviders(json.results.US); console.log(json.results.US) })
@@ -62,11 +62,12 @@ const Movie = () => {
 
     const location = useContext(LocationContext)
 
+    const [counter, setCounter] = useState(0)
+
     document.title = movieData.title ? movieData.title : 'Loading Movie'
     if (loading) {
-        return(<Loading></Loading>)
+        return (<Loading></Loading>)
     } else {
-        
         return (
             <div
                 style={{
@@ -95,12 +96,18 @@ const Movie = () => {
                                 <span><a href={homepage} target='_blank'><h1 className="text-4xl text-white hover:text-blue-600">{title} ({releaseDateFormatted.getFullYear()})</h1></a><p className='italic'>{tagline}</p></span>
                                 {/* <p>{release_date}</p> */}
                                 <div>
-                                    
-                                {contentRatings && contentRatings.countries.map(rating=>{
-                                    if (rating.iso_3166_1 === location && new Date(rating.release_date).getFullYear() === releaseDateFormatted.getFullYear()){ 
-                                        return <p className='text-xs border-2 border-yellow-500 p-1 text-yellow-500 w-fit'>{rating.certification}</p>
-                                    }
-                                })}
+
+                                    {contentRatings && contentRatings.map(rating => {
+                                        if (rating.iso_3166_1 === location) {
+                                            
+                                            if (rating.release_dates[counter].certification !== '') {
+                                                return <p className='text-xs border-2 border-yellow-500 p-1 text-yellow-500 w-fit'>{rating.release_dates[counter].certification}</p>
+                                            }
+                                            else{
+                                                setCounter(counter + 1)
+                                            }
+                                        }
+                                    })}
                                 </div>
                                 <p>{overview}</p>
                             </div>
