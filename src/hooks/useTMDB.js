@@ -1,36 +1,15 @@
 import { useEffect, useState } from "react"
 
-const useTMDB = ({category,url}) => {
-
-    let base = 'https://api.themoviedb.org/3/'
-    switch(category){
-        case 'movie':
-            base = base + 'movie/'
-            break;
-        default:
-            break;
-    }
-
-    const [loading, setLoading] = useState(true)
+const useTMDB = (type, query) => {
     const [data, setData] = useState(null)
-
-    const fetchApi = () => {
+    const url = `https://api.themoviedb.org/3/${type}/${query}`
+    
+    useEffect(()=>{
         fetch(url)
-        .then((response)=>{
-            return response.json()
-        })
-        .then((json)=>{
-            console.log(json)
-            setLoading(false)
-            setData(json)
-        })
-    }
+            .then((res) => res.json())
+            .then((json) => {setData(json)})
+    })
 
-    useEffect(()=> {
-        fetchApi();
-    },[])
-
-    return {loading, data}
+    return [data]
 }
-
 export default useTMDB

@@ -1,5 +1,5 @@
 import MovieApp from "./MovieApp";
-
+import React from "react";
 
 function App() {
   return (
