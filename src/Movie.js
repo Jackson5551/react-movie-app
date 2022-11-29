@@ -99,9 +99,13 @@ const Movie = () => {
 
                                     {contentRatings && contentRatings.map(rating => {
                                         if (rating.iso_3166_1 === location) {
-                                            
-                                            if (rating.release_dates[counter].certification !== '') {
-                                                return <p className='text-xs border-2 border-yellow-500 p-1 text-yellow-500 w-fit'>{rating.release_dates[counter].certification}</p>
+                                            if (rating.release_dates[counter].certification) {
+                                                if (rating.release_dates[counter].certification !== '') {
+                                                    return (<p className='text-xs border-2 border-yellow-500 p-1 text-yellow-500 w-fit'>{rating.release_dates[counter].certification}</p>)
+                                                }
+                                                else {
+                                                    setCounter(counter + 1)
+                                                }
                                             }
                                             else{
                                                 setCounter(counter + 1)
