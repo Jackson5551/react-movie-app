@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { LocationContext } from './context/LocationContext'
 import Loading from './Loading'
+import { formatTime } from './helpers/formatTime'
+import { formatCurrency } from './helpers/formatCurrency'
 
 const Show = () => {
   const [showData, setShowData] = useState({})
@@ -22,8 +24,8 @@ const Show = () => {
       .then((res) => res.json())
       .then((json) => { setWatchProviders(json.results.US); console.log(json.results.US) })
     fetch(`https://api.themoviedb.org/3/tv/${showId}/content_ratings?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&locale=US`)
-    .then((res)=> res.json())
-    .then((json)=> {setContentRatings(json.results); console.log(json.results)})
+      .then((res) => res.json())
+      .then((json) => { setContentRatings(json.results); console.log(json.results) })
     fetch(`https://api.themoviedb.org/3/tv/${showId}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&locale=US`)
       .then((res) => res.json())
       .then((json) => { setCredits(json); setLoading(false); console.log(json) })
@@ -74,28 +76,40 @@ const Show = () => {
           'backgroundAttachment': 'fixed'
         }}
         className="w-full h-full bg-center bg-cover bg-no-repeat bg-fixed">
-        <div className='backdrop-blur-lg bg-slate-800/50 p-3 h-full'>
+        <div className='backdrop-blur-lg bg-slate-800/50 p-3 h-full min-h-screen'>
           <div className='flex w-full min-h-[50vh]'>
-            <div>
+            <div className=''>
               {/* <p>{tagline}</p> */}
-              {/* <img src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-                        className='rounded-3xl'></img> */}
-              <div
+              <img src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                className='rounded-2xl min-w-96 h-full'></img>
+              {/* <div
                 style={{
                   'backgroundImage': `url(${posterImageUrl})`
                 }}
                 className='w-96 h-full bg-center bg-contain bg-no-repeat drop-shadow-2xl'>
 
-              </div>
+              </div> */}
 
             </div>
             <div className='flex-col ml-2 w-full'>
-              <div className='text-slate-400 bg-slate-800 p-5 h-fit mb-2'>
+              <div className='text-slate-400 bg-slate-800 p-5 h-fit mb-2 rounded-2xl'>
                 <span><a href={homepage} target='_blank'><h1 className="text-4xl text-white hover:text-blue-600">{name}</h1></a><p className='italic'>{tagline}</p></span>
                 {/* <p>{release_date}</p> */}
-                {contentRatings && contentRatings.map(rating=>{
-                  if (rating.iso_3166_1 === location) return <p className='text-xs border-2 border-yellow-500 p-1 text-yellow-500 w-fit'>{rating.rating}</p>
-                })}
+                <div className='flex items-center text-slate-500'>
+                  {contentRatings && contentRatings.map(rating => {
+                    if (rating.iso_3166_1 === location) return <p className='text-xs border-2 border-yellow-500 p-1 text-yellow-500 w-fit mt-1 mb-1'>{rating.rating}</p>
+                  })}
+                  <p className='p-1 pl-2'> &bull; </p>
+                  <p className=''>{number_of_episodes} Episodes</p>
+                  <p className='p-1'> &bull; </p>
+                  <p className=''>{number_of_seasons} {number_of_seasons <= 1 ? 'Season' : 'Seasons'}</p>
+                  <p className='p-1'> &bull; </p>
+                  <p className=''>
+                    {genres.map((genre, index) => {
+                      return <Link className=''>{`${index ? ', ' : ''}`}<span className='hover:text-blue-600'>{genre.name}</span></Link>
+                    })}
+                  </p>
+                </div>
                 <p>{overview}</p>
               </div>
               {watchProviders ?
@@ -125,7 +139,7 @@ const Show = () => {
                     })}
                   </div>
                 </div>
-                : <div>Loading</div>}
+                : <div className='text-white'>No watch providers available</div>}
             </div>
           </div>
           <div className='h-full w-full bg-'>
@@ -150,8 +164,8 @@ const Show = () => {
                 {credits.cast.length > 0 && <h1 className='text-white text-2xl text-center'>Cast</h1>}
                 {credits.cast.map(credit => {
                   return (
-                    <div className='flex justify-start items-center p-3 bg-slate-800 text-white m-1 w-full hover:bg-slate-700 cursor-pointer'>
-                      {credit.profile_path ? <img src={`https://image.tmdb.org/t/p/original${credit.profile_path}`} className='w-12 rounded-3xl m-1'></img> : <></>}
+                    <div className='flex justify-start items-center p-3 bg-slate-800 text-white m-1 w-full hover:bg-slate-700 cursor-pointer rounded-2xl'>
+                      {credit.profile_path ? <img src={`https://image.tmdb.org/t/p/original${credit.profile_path}`} className='w-12 rounded-xl m-1 mr-3'></img> : <></>}
                       <div className='w-80'>
                         <p>{credit.name}</p>
                         <small className='break-normal text-slate-400'>{credit.character}</small>
@@ -165,7 +179,7 @@ const Show = () => {
                 {credits.crew.length > 0 && <h1 className='text-white text-2xl text-center'>Crew</h1>}
                 {credits.crew.map(credit => {
                   return (
-                    <div className='flex justify-start items-center p-3 bg-slate-800 text-white m-1 w-full hover:bg-slate-700 cursor-pointer'>
+                    <div className='flex justify-start items-center p-3 bg-slate-800 text-white m-1 w-full hover:bg-slate-700 cursor-pointer rounded-2xl'>
                       {/* {credit.profile_path ? <img src={`https://image.tmdb.org/t/p/original${credit.profile_path}`} className='w-12 rounded-3xl m-1'></img> : <></>} */}
                       <div className='w-80'>
                         <p>{credit.name}</p>

@@ -7,6 +7,7 @@ import Show from './Show';
 import SearchResults from './SearchResults';
 import Results from './components/Results';
 import './index.css'
+import Person from './Person';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path:"/tvshows/:showId",
     element: <Show></Show>
+  },
+  {
+    path:"/people/:personId",
+    element: <Person></Person>
   }
 ])
 
