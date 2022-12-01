@@ -8,6 +8,9 @@ import SearchResults from './SearchResults';
 import Results from './components/Results';
 import './index.css'
 import Person from './Person';
+import Movies from './Movies';
+import TVShows from './TVShows';
+import People from './People';
 
 const router = createBrowserRouter([
   {
@@ -20,12 +23,24 @@ const router = createBrowserRouter([
     element: <Results></Results>
   },
   {
+    path:"/movies",
+    element: <Movies></Movies>
+  },
+  {
     path:"/movies/:movieId",
     element: <Movie></Movie>
   },
   {
+    path:"/tvshows",
+    element: <TVShows></TVShows>
+  },
+  {
     path:"/tvshows/:showId",
     element: <Show></Show>
+  },
+  {
+    path:"/people",
+    element: <People></People>
   },
   {
     path:"/people/:personId",

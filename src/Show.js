@@ -123,10 +123,10 @@ const Show = () => {
 
                   </div>
                   <p>{overview}</p>
-                  {production_companies.length >= 1 && <div className='text-xs mt-5'>
+                  {production_companies && production_companies.length >= 1 && <div className='text-xs mt-5'>
                     <p>
                       <span className='text-white'>Producers:</span>
-                      {production_companies.map((company, index) => {
+                      {production_companies && production_companies.map((company, index) => {
                         return (
                           <span> {`${index ? ', ' : ''}`}{company.name}</span>
                         )
