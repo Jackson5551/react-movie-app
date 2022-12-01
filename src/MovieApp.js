@@ -1,10 +1,11 @@
 import React from 'react'
+import Navbar from './components/Navbar'
 import Search from './components/Search'
 
 const MovieApp = () => {
   return (
     <div>
-        <Search></Search>
+        <Navbar></Navbar>
     </div>
   )
 }

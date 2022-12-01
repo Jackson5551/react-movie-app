@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import Navbar from './Navbar'
 import Pagination from './Pagination'
 import Search from './Search'
 
@@ -62,7 +63,7 @@ const Results = () => {
     console.log(paginationAttribs)
     return (
         <div>
-            <Search></Search>
+            <Navbar></Navbar>
             {!loading ?
             <Pagination
                 {...paginationAttribs}
