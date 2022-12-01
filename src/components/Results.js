@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import Loading from '../Loading'
 import Navbar from './Navbar'
 import Pagination from './Pagination'
 import Search from './Search'
@@ -19,7 +20,7 @@ const Results = () => {
     useEffect(() => {
         setLoading(true)
         setSearchQuery(query)
-        fetch(`https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${query}&page=${currentPage}`)
+        fetch(`https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_TMDB_API_KEY}&include_adult=false&query=${query}&page=${currentPage}`)
             .then((res) => res.json())
             .then((json) => { setSearchData(json); setLoading(false); console.log(json)})
 
@@ -71,7 +72,7 @@ const Results = () => {
                 onNextClick={onNextClick}
                 onPageChange={onPageChange}
             />
-            : <div>Loading...</div>
+            : <Loading></Loading>
             }
         </div>
     )

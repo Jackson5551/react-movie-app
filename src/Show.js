@@ -204,9 +204,9 @@ const Show = () => {
                   </div>
                   <div className='flex flex-col text-center'>
                     {!next_episode_to_air ?
-                      <><span className='text-white text-lg'>Last Episode</span><span>"{last_episode_to_air.name}" on {last_episode_to_air.air_date}</span></>
+                      <><span className='text-white text-lg'>Last Episode</span><span>"{last_episode_to_air?.name}" on {last_episode_to_air?.air_date}</span></>
                       :
-                      <><span className='text-white text-lg'>Next Episode</span><span className='text-sm'>"{next_episode_to_air.name}" on {next_episode_to_air.air_date}</span></>
+                      <><span className='text-white text-lg'>Next Episode</span><span className='text-sm'>"{next_episode_to_air?.name}" on {next_episode_to_air?.air_date}</span></>
                     }
                   </div>
                 </div>

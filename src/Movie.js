@@ -88,8 +88,8 @@ const Movie = () => {
                         }}
                         className="w-full h-full bg-center bg-cover bg-no-repeat bg-fixed">
                         <div className='backdrop-blur-lg bg-slate-800/50 p-2 h-full min-h-screen'>
-                            <div className='flex h-full w-full min-h-[50vh]'>
-                                <div className=''>
+                            <div className='flex h-full w-full min-h-[50vh] max-md:flex-col max-md:items-center'>
+                                <div className='max-md:m-5'>
                                     {/* <p>{tagline}</p> */}
                                     <img src={`https://image.tmdb.org/t/p/w500${poster_path}`}
                                         className='rounded-2xl min-w-96'></img>
@@ -185,7 +185,7 @@ const Movie = () => {
                                 </div>
                             </div>
                             <div className='flex justify-center mt-2'>
-                                <div className='bg-slate-800 rounded-xl w-full p-5 flex justify-around text-slate-400'>
+                                <div className='bg-slate-800 rounded-xl w-full p-5 flex justify-around text-slate-400 max-sm:flex-col'>
                                     <div className='flex flex-col text-center'>
                                         <span className='text-white text-lg'>Status</span>
                                         <span className='text-sm'>{status}</span>
@@ -209,6 +209,7 @@ const Movie = () => {
                                     <span>You might also be interested in...</span>
                                     <div className='flex justify-center flex-wrap'>
                                         {recommendations && recommendations.map(recommendation => {
+                                            if(recommendation.poster_path){
                                             return (
                                                 <div className='m-1'>
                                                     <Link to={`/movies/${recommendation.id}`}>
@@ -216,14 +217,14 @@ const Movie = () => {
                                                             className='w-28 rounded-xl min-h-full border-solid border-2 border-transparent hover:border-white'></img>
                                                     </Link>
                                                 </div>
-                                            )
+                                            )}
                                         })}
                                     </div>
 
                                 </div>
                             </div>
-                            <div className='h-full w-full bg-'>
-                                {credits ? <div className='flex justify-center'>
+                            <div className='h-full w-full'>
+                                {credits ? <div className='flex justify-center max-md:flex-col'>
                                     <div className='m-1'>
                                         <h1 className='text-white text-2xl text-center'>Cast</h1>
                                         {credits.cast.map(credit => {
