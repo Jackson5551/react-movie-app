@@ -9,7 +9,7 @@ const MovieApp = () => {
   const [query, setQuery] = useState('')
   const handleSubmit = event => {
     event.preventDefault()
-    navigate(`/search/${query}/1`)
+    navigate(`/search/${query}`)
 
   }
   return (
