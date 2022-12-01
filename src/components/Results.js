@@ -26,11 +26,9 @@ const Results = () => {
 
         if(query !== searchQuery){
             setSearchQuery(query)
+            setCurrentPage(1)
         }
-        if(page !== currentPage){
-            setCurrentPage(page)
-        }
-    }, [currentPage,searchQuery, query, page])
+    }, [currentPage,searchQuery, query])
 
     const onPageChange = (pageNumber) => {
         setCurrentPage(pageNumber)
@@ -42,7 +40,6 @@ const Results = () => {
             setMinPageLimit(minPageLimit - pageNumberLimit)
         }
         setCurrentPage(prev => prev - 1)
-        navigate(`/search/${query}/${+page-1}`)
     }
 
     const onNextClick = () => {
@@ -51,7 +48,17 @@ const Results = () => {
             setMinPageLimit(minPageLimit + pageNumberLimit)
         }
         setCurrentPage(prev => prev + 1)
-        navigate(`/search/${query}/${+page+1}`)
+        // navigate(`/search/${query}/${+page+1}`)
+    }
+    const onGotoFirstPageClick = ()=>{
+        setMaxPageLimit(5)
+        setMinPageLimit(0)
+        setCurrentPage(1)
+    }
+    const onGotoLastPageClick = ()=>{
+        setMaxPageLimit(searchData.total_pages)
+        setMinPageLimit(searchData.total_pages - pageNumberLimit)
+        setCurrentPage(searchData.total_pages)
     }
 
     const paginationAttribs = {
@@ -71,6 +78,8 @@ const Results = () => {
                 onPrevClick={onPrevClick}
                 onNextClick={onNextClick}
                 onPageChange={onPageChange}
+                onGotoFirstPageClick={onGotoFirstPageClick}
+                onGotoLastPageClick={onGotoLastPageClick}
             />
             : <Loading></Loading>
             }

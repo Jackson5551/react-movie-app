@@ -25,7 +25,7 @@ const Search = ({ value }) => {
     // console.log(searchData)
     const handleSubmit = event => {
         event.preventDefault()
-        navigate(`/search/${query}/1`)
+        navigate(`/search/${query}`)
         
     }
     return (

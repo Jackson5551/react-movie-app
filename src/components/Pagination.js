@@ -40,11 +40,23 @@ const Pagination = (props) => {
     const handleNextClick = () => {
         props.onNextClick()
     }
+    const handlePageClick = (e) => {
+        props.onPageChange(Number(e.target.id));
+    }
+    const handleGotoFirstPageClick = () => {
+        props.onGotoFirstPageClick()
+    }
+    const handleGotoLastPageClick = () => {
+        props.onGotoLastPageClick()
+    }
 
     const pageNumbers = pages.map(page => {
         if (page <= maxPageLimit && page > minPageLimit) {
             return (
-                <li>{page}</li>
+                <li
+                    className={currentPage === page ? 'border-solid border-2 border-slate-400 bg-slate-400 rounded-xl text-white m-2 p-2 cursor-pointer' : 'text-white m-2 p-2 cursor-pointer hover:underline'}
+                    id={page}
+                    onClick={handlePageClick}>{page}</li>
             )
         } else {
             return null
@@ -53,28 +65,47 @@ const Pagination = (props) => {
 
     let pageIncrementEllipses = null
     if (pages.length > maxPageLimit) {
-        pageIncrementEllipses = <li onClick={handleNextClick}>&hellip;</li>
+        pageIncrementEllipses = <li className='text-white cursor-pointer' onClick={handleGotoLastPageClick}>&hellip;</li>
     }
 
     let pageDecrementEllipses = null
-    if (maxPageLimit >= 1) {
-        pageDecrementEllipses = <li onClick={handlePrevClick}>&hellip;</li>
+    if (minPageLimit >= 1) {
+        pageDecrementEllipses = <li className='text-white cursor-pointer' onClick={handleGotoFirstPageClick}>&hellip;</li>
     }
 
     return (
         <div>
-            <div className=''>
-                {renderData(searchData)}
-            </div>
-            <ul>
+            <ul className='flex justify-center items-center h-full w-full bg-slate-800'>
                 <li>
-                    <button onClick={handlePrevClick} disabled={(currentPage === pages[0])}>Prev</button>
+                    <button
+                        className='p-2 m-2 text-white cursor-pointer disabled:hidden'
+                        onClick={handlePrevClick} disabled={(currentPage === pages[0])}>&larr; Prev</button>
                 </li>
                 {pageDecrementEllipses}
                 {pageNumbers}
                 {pageIncrementEllipses}
                 <li>
-                    <button onClick={handleNextClick} disabled={currentPage === pages[pages.length - 1]}>Next</button>
+                    <button
+                        className='p-2 m-2 text-white cursor-pointer disabled:hidden'
+                        onClick={handleNextClick} disabled={currentPage === pages[pages.length - 1]}>Next &rarr;</button>
+                </li>
+            </ul>
+            <div>
+                {renderData(searchData)}
+            </div>
+            <ul className='flex justify-center items-center h-full w-full bg-slate-800'>
+                <li>
+                    <button
+                        className='p-2 m-2 text-white cursor-pointer disabled:hidden'
+                        onClick={handlePrevClick} disabled={(currentPage === pages[0])}>&larr; Prev</button>
+                </li>
+                {pageDecrementEllipses}
+                {pageNumbers}
+                {pageIncrementEllipses}
+                <li>
+                    <button
+                        className='p-2 m-2 text-white cursor-pointer disabled:hidden'
+                        onClick={handleNextClick} disabled={currentPage === pages[pages.length - 1]}>Next &rarr;</button>
                 </li>
             </ul>
         </div>

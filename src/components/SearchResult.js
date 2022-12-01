@@ -6,8 +6,8 @@ const SearchResult = ({ results }) => {
     document.title = `Results for '${query}'`
     return (
         // <Link>
-        <div className='w-full h-full bg-gradient-to-r from-[#01b4e4] to-[#90cea1]'>
-            <div className='w-full h-full bg-slate-800/90'>
+        <div className=' min-h-screen bg-gradient-to-r from-[#01b4e4] to-[#90cea1]'>
+            <div className='w-full h-full min-h-screen bg-slate-800/90'>
                 <div
                     className='flex justify-center'>
                     <h1 className='text-white text-2xl p-2'>Results for "{query}"</h1>
