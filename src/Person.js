@@ -49,6 +49,7 @@ const Person = () => {
         console.log(filtered)
         return filtered
     }
+    document.title = personData.name ? personData.name : 'Loading Person...'
 
     if (loading) {
         return <Loading></Loading>

@@ -12,6 +12,7 @@ const MovieApp = () => {
     navigate(`/search/${query}`)
 
   }
+  document.title = "React Movie Info App"
   return (
     <div className='bg-gradient-to-r from-[#01b4e4] to-[#90cea1] h-screen w-screen flex justify-center items-center'>
       <div className='w-full h-full flex flex-col justify-around bg-blur bg-slate-800/60 p-5'>

@@ -70,7 +70,7 @@ const Show = () => {
   let backdropImageUrl = `https://image.tmdb.org/t/p/original${backdrop_path}`
   let posterImageUrl = `https://image.tmdb.org/t/p/w500${poster_path}`
 
-  document.title = showData.name ? showData.name : 'Loading Movie'
+  document.title = showData.name ? showData.name : 'Loading Show'
 
   if (loading) {
     return (

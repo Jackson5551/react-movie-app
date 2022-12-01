@@ -14,6 +14,7 @@ const Movies = () => {
       .then((json) => { setPopularMovies(json); console.log(json); setLoading(false) })
   }, [])
 
+  document.title = "Top Movies"
   if (loading) {
     return (<Loading></Loading>)
   } else {

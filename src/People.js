@@ -13,7 +13,7 @@ const People = () => {
             .then((res) => res.json())
             .then((json) => { setPopularPeople(json); console.log(json); setLoading(false) })
     }, [])
-
+    document.title = "Top People"
     if (loading) {
         return (<Loading></Loading>)
     } else {

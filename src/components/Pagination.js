@@ -75,14 +75,14 @@ const Pagination = (props) => {
 
     return (
         <div>
-            <ul className='flex justify-center items-center h-full w-full bg-slate-800'>
+            <ul className='flex justify-center items-center h-full w-full bg-slate-800 max-sm:flex-col'>
                 <li>
                     <button
                         className='p-2 m-2 text-white cursor-pointer disabled:hidden'
                         onClick={handlePrevClick} disabled={(currentPage === pages[0])}>&larr; Prev</button>
                 </li>
                 {pageDecrementEllipses}
-                {pageNumbers}
+                <div className='flex'>{pageNumbers}</div>
                 {pageIncrementEllipses}
                 <li>
                     <button
@@ -93,14 +93,14 @@ const Pagination = (props) => {
             <div>
                 {renderData(searchData)}
             </div>
-            <ul className='flex justify-center items-center h-full w-full bg-slate-800'>
+            <ul className='flex justify-center items-center h-full w-full bg-slate-800 max-sm:flex-col'>
                 <li>
                     <button
                         className='p-2 m-2 text-white cursor-pointer disabled:hidden'
                         onClick={handlePrevClick} disabled={(currentPage === pages[0])}>&larr; Prev</button>
                 </li>
                 {pageDecrementEllipses}
-                {pageNumbers}
+                <div className='flex'>{pageNumbers}</div>
                 {pageIncrementEllipses}
                 <li>
                     <button

@@ -14,6 +14,8 @@ const TVShows = () => {
             .then((json) => { setPopularTV(json); console.log(json); setLoading(false) })
     }, [])
 
+    document.title = 'Top TV'
+
     if (loading) {
         return (<Loading></Loading>)
     } else {

@@ -72,7 +72,7 @@ const Movie = () => {
 
     const [counter, setCounter] = useState(0)
 
-    document.title = movieData.title ? movieData.title : 'Loading Movie'
+    document.title = movieData.title ? movieData.title : 'Loading Movie...'
     if (loading) {
         return (<Loading></Loading>)
     } else {
