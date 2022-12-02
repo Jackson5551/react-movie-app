@@ -18,21 +18,20 @@ const Results = () => {
     let navigate = useNavigate()
     useEffect(() => {
         setLoading(true)
-        
+
         if (searchQuery !== query && currentPage !== 1) {
-            setCurrentPage(1);            
+            setCurrentPage(1);
             setMaxPageLimit(5);
             setMinPageLimit(0);
-        } 
+        }
         setSearchQuery(query)
-        fetch(`https://api.themoviedb.org/3/search/${searchCategory}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&include_adult=false&query=${query}&page=${currentPage}`)
-            .then((res) => res.json())
-            .then((json) => { setSearchData(json); setLoading(false); console.log(json)})
-
-        if(query !== searchQuery){
+            fetch(`https://api.themoviedb.org/3/search/${searchCategory}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&include_adult=false&query=${query}&page=${currentPage}`)
+                .then((res) => res.json())
+                .then((json) => { setSearchData(json); setLoading(false); console.log(json) })
+        if (query !== searchQuery) {
             setSearchQuery(query)
         }
-    }, [currentPage,searchQuery, query, searchCategory])
+    }, [currentPage, searchQuery, query, searchCategory])
 
     const onPageChange = (pageNumber) => {
         setCurrentPage(pageNumber)
@@ -54,12 +53,12 @@ const Results = () => {
         setCurrentPage(prev => prev + 1)
         // navigate(`/search/${query}/${+page+1}`)
     }
-    const onGotoFirstPageClick = ()=>{
+    const onGotoFirstPageClick = () => {
         setMaxPageLimit(5)
         setMinPageLimit(0)
         setCurrentPage(1)
     }
-    const onGotoLastPageClick = ()=>{
+    const onGotoLastPageClick = () => {
         setMaxPageLimit(searchData.total_pages)
         setMinPageLimit(searchData.total_pages - pageNumberLimit)
         setCurrentPage(searchData.total_pages)
@@ -77,15 +76,15 @@ const Results = () => {
         <div>
             <Navbar></Navbar>
             {!loading ?
-            <Pagination
-                {...paginationAttribs}
-                onPrevClick={onPrevClick}
-                onNextClick={onNextClick}
-                onPageChange={onPageChange}
-                onGotoFirstPageClick={onGotoFirstPageClick}
-                onGotoLastPageClick={onGotoLastPageClick}
-            />
-            : <Loading></Loading>
+                <Pagination
+                    {...paginationAttribs}
+                    onPrevClick={onPrevClick}
+                    onNextClick={onNextClick}
+                    onPageChange={onPageChange}
+                    onGotoFirstPageClick={onGotoFirstPageClick}
+                    onGotoLastPageClick={onGotoLastPageClick}
+                />
+                : <Loading></Loading>
             }
         </div>
     )

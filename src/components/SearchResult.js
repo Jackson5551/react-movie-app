@@ -37,7 +37,7 @@ const SearchResult = ({ results }) => {
                                         className='w-96 h-full min-h-[550px] max-h-full rounded-2xl border-solid border-transparent border-2'></img><p className='absolute text-3xl text-center text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6'>{result.name}</p></div>}
                             </Link>
                         </li>
-                        else return <li className='m-3 box-border'>
+                        if (searchCategory === 'person') return <li className='m-3 box-border'>
                             <Link to={`/people/${result.id}`}>
                                 {result.profile_path ? <div className='relative hover:shadow-2xl border-solid border-transparent border-2 hover:shadow-white/50 hover:border-solid hover:border-white hover:border-2 box-border hover:box-border rounded-2xl'>
                                 <img src={`https://image.tmdb.org/t/p/w500${result.profile_path}`}
@@ -46,6 +46,15 @@ const SearchResult = ({ results }) => {
                                     : <div className='relative hover:shadow-2xl border-solid border-transparent border-2 hover:shadow-white/50 hover:border-solid hover:border-white hover:border-2 box-border hover:box-border rounded-2xl'>
                                             <img src={empty}
                                             className='w-96 h-full min-h-[550px] max-h-full rounded-2xl border-solid border-transparent border-2'></img><p className='absolute text-3xl text-center text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6'>{result.name}</p></div>}
+                            </Link>
+                        </li>
+                        if (searchCategory === 'collection') return <li className='m-3 box-border'>
+                            <Link to={`/collection/${result.id}`}>
+                                {result.poster_path ? <img src={imgUrl}
+                                    className='w-96 h-full min-h-[550px] max-h-full hover:shadow-2xl border-solid border-transparent border-2 hover:shadow-white/50 hover:border-solid hover:border-white hover:border-2 box-border hover:box-border rounded-2xl'
+                                    alt={result.name}></img> : <div className='relative hover:shadow-2xl border-solid border-transparent border-2 hover:shadow-white/50 hover:border-solid hover:border-white hover:border-2 box-border hover:box-border rounded-2xl'>
+                                    <img src={empty}
+                                        className='w-96 h-full min-h-[550px] max-h-full rounded-2xl border-solid border-transparent border-2'></img><p className='absolute text-3xl text-center text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6'>{result.name}</p></div>}
                             </Link>
                         </li>
                     })}

@@ -42,6 +42,7 @@ const Search = ({ value }) => {
                             <option value={'movie'}>Movies</option>
                             <option value={'tv'}>TV</option>
                             <option value={'person'}>People</option>
+                            <option value={'collection'}>Collections</option>
                         </select>
                     </div>
                     <div

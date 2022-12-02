@@ -11,6 +11,7 @@ import Person from './Person';
 import Movies from './Movies';
 import TVShows from './TVShows';
 import People from './People';
+import Collection from './Collection';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
   {
     path:"/people/:personId",
     element: <Person></Person>
+  },
+  {
+    path:"/collection/:collectionId",
+    element: <Collection></Collection>
   }
 ])
 
