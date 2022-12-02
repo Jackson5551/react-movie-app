@@ -14,7 +14,7 @@ const Results = () => {
     const [maxPageLimit, setMaxPageLimit] = useState(5)
     const [minPageLimit, setMinPageLimit] = useState(0)
 
-    let { query, page } = useParams()
+    let { query, searchCategory } = useParams()
     let navigate = useNavigate()
     useEffect(() => {
         setLoading(true)
@@ -25,14 +25,14 @@ const Results = () => {
             setMinPageLimit(0);
         } 
         setSearchQuery(query)
-        fetch(`https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_TMDB_API_KEY}&include_adult=false&query=${query}&page=${currentPage}`)
+        fetch(`https://api.themoviedb.org/3/search/${searchCategory}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&include_adult=false&query=${query}&page=${currentPage}`)
             .then((res) => res.json())
             .then((json) => { setSearchData(json); setLoading(false); console.log(json)})
 
         if(query !== searchQuery){
             setSearchQuery(query)
         }
-    }, [currentPage,searchQuery, query])
+    }, [currentPage,searchQuery, query, searchCategory])
 
     const onPageChange = (pageNumber) => {
         setCurrentPage(pageNumber)

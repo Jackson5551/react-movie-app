@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import empty from '../img/empty.png'
 
 const SearchResult = ({ results }) => {
-    const { query, page } = useParams()
+    const { query, searchCategory } = useParams()
     document.title = `Results for '${query}'`
     return (
         // <Link>
@@ -18,7 +18,7 @@ const SearchResult = ({ results }) => {
                         // <img src={`https://image.tmdb.org/t/p/w500/${results.poster_path}`}></img>
                         let imgUrl = `https://image.tmdb.org/t/p/w500${result.poster_path}`
 
-                        if (result.media_type === 'movie') return <li className='m-3 box-border'>
+                        if (result.media_type === 'movie' || searchCategory === 'movie') return <li className='m-3 box-border'>
                             <Link to={`/movies/${result.id}`}>
                                 {result.poster_path ? <img src={imgUrl}
                                     className='w-96 h-full min-h-[550px] max-h-full hover:shadow-2xl border-solid border-transparent border-2 hover:shadow-white/50 hover:border-solid hover:border-white hover:border-2 box-border hover:box-border rounded-2xl'
@@ -27,7 +27,7 @@ const SearchResult = ({ results }) => {
                                             className='w-96 h-full min-h-[550px] max-h-full rounded-2xl border-solid border-transparent border-2'></img><p className='absolute text-3xl text-center text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6'>{result.title}</p></div>}
                             </Link>
                         </li>
-                        if (result.media_type === 'tv') return <li className='m-3 box-border'>
+                        if (result.media_type === 'tv' || searchCategory === 'tv') return <li className='m-3 box-border'>
 
                             <Link to={`/tvshows/${result.id}`}>
                                 {result.poster_path ? <img src={imgUrl}

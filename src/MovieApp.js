@@ -7,9 +7,10 @@ const MovieApp = () => {
   const navigate = useNavigate()
 
   const [query, setQuery] = useState('')
+  const [searchCategory, setSearchCategory] = useState('multi')
   const handleSubmit = event => {
     event.preventDefault()
-    navigate(`/search/${query}`)
+    navigate(`/search/${query}/${searchCategory}`)
 
   }
   document.title = "MovieDb"
@@ -39,9 +40,17 @@ const MovieApp = () => {
               onSubmit={handleSubmit}>
 
               <div className='flex justify-center items-center max-sm:flex-col'>
+                <div className='max-sm:relative max-sm:w-full max-sm:p-5'>
+                  <select className='border-solid border-2 border-[#0d253f] bg-[#0d253f] text-white p-4 w-fit max-sm:w-full rounded-l-2xl max-sm:rounded-2xl' onChange={(e)=> setSearchCategory(e.target.value)}>
+                    <option value={'multi'} selected>All</option>
+                    <option value={'movie'}>Movies</option>
+                    <option value={'tv'}>TV</option>
+                    <option value={'person'}>People</option>
+                  </select>
+                </div>
                 <div
                   className='relative w-full'>
-                  <input type="text" class="block p-4 w-full text-sm rounded-l-2xl text-slate-800 bg-white border-solid border-2 border-transparent focus:ring-transparent focus:border-blue-500 max-sm:rounded-2xl" placeholder="Search Movies, TV Shows, People..." required onChange={(e) => setQuery(e.target.value)}></input>
+                  <input type="text" class="block p-4 w-full text-sm text-slate-800 bg-white border-solid border-2 border-transparent focus:ring-transparent focus:border-blue-500 max-sm:rounded-2xl" placeholder="Search Movies, TV Shows, People..." required onChange={(e) => setQuery(e.target.value)}></input>
                 </div>
                 <div className='max-sm:relative max-sm:w-full max-sm:p-5'>
                   <button

@@ -18,7 +18,7 @@ const router = createBrowserRouter([
     element: <App></App>
   },
   {
-    path:"/search/:query/",
+    path:"/search/:query/:searchCategory",
     // element: <SearchResults></SearchResults>
     element: <Results></Results>
   },
