@@ -35,7 +35,7 @@ const Person = () => {
         imdb_id,
         homepage
     } = personData
-    let backdropImageUrl = `https://image.tmdb.org/t/p/original${credits?.cast[0].backdrop_path}`
+    let backdropImageUrl = `https://image.tmdb.org/t/p/original${credits?.cast[0]?.backdrop_path}`
 
     const filterRoles = (roles) =>{
         let filtered = []
@@ -49,6 +49,16 @@ const Person = () => {
         console.log(filtered)
         return filtered
     }
+    let formatted_birthday = new Date(birthday)
+    const current_age = (bday) => {
+        let now = new Date()
+        let then = new Date(bday)
+        let age = now.getFullYear() - then.getFullYear()
+        if(then.getMonth() >= now.getMonth()) {
+            if(then.getDate() > now.getDate()) return age - 1
+        }
+        return age
+    }
     document.title = personData.name ? personData.name : 'Loading Person...'
 
     if (loading) {
@@ -57,30 +67,23 @@ const Person = () => {
         return (
             <>
                 <Navbar></Navbar>
-                <div className='bg-slate-600'>
+                <div className='bg-gradient-to-r from-[#01b4e4] to-[#90cea1]'>
                     <div
                         style={{
                             'var(--image-url)': backdropImageUrl,
-                            'backgroundImage': `url(${backdropImageUrl})`,
+                            'backgroundImage': `url(${backdropImageUrl && backdropImageUrl})`,
                             'backgroundAttachment': 'fixed'
                         }}
                         className="w-full h-full bg-center bg-cover bg-no-repeat bg-fixed">
                         <div className='backdrop-blur-lg bg-slate-800/50 p-2 h-full min-h-screen'>
                             <div className='flex h-full w-full min-h-[50vh] max-md:flex-col max-md:items-center'>
+                                {profile_path && 
                                 <div className='max-md:m-5'>
                                     {/* <p>{tagline}</p> */}
                                     <img src={`https://image.tmdb.org/t/p/w500${profile_path}`}
                                         className='rounded-2xl min-w-96'></img>
-                                    {/* <div
-                                style={{
-                                    'backgroundImage': `url(${posterImageUrl})`
-                                }}
-                                className='w-96 h-full bg-center bg-contain bg-no-repeat drop-shadow-2xl'>
-
-                            </div> */}
-
-                                </div>
-                                <div className='flex-col ml-2 w-full'>
+                                </div>}
+                                <div className={`flex-col w-full ${profile_path ? 'ml-2' : ''}`}>
                                     <div className='text-slate-400 bg-slate-800 p-5 h-fit mb-2 rounded-2xl'>
                                         <span><a href={homepage} target='_blank'><h1 className="text-4xl text-white hover:text-blue-600">{name}</h1></a><p className='italic'>{known_for_department}</p></span>
                                         {/* <p>{release_date}</p> */}
@@ -97,7 +100,7 @@ const Person = () => {
                                 <div className='bg-slate-800 rounded-xl w-full p-5 flex justify-around text-slate-400 max-sm:flex-col'>
                                     <div className='flex flex-col text-center'>
                                         <span className='text-white text-lg'>Birthday</span>
-                                        <span className='text-sm'>{birthday}</span>
+                                        <span className='text-sm'>{formatted_birthday.toDateString()} ({current_age(birthday)} years)</span>
                                     </div>
                                     <div className='flex flex-col text-center'>
                                         <span className='text-white text-lg'>Place of Birth</span>

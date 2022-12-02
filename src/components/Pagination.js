@@ -65,12 +65,12 @@ const Pagination = (props) => {
 
     let pageIncrementEllipses = null
     if (pages.length > maxPageLimit) {
-        pageIncrementEllipses = <li className='text-white cursor-pointer' onClick={handleGotoLastPageClick}>&hellip;</li>
+        pageIncrementEllipses = <li className='text-white cursor-pointer' onClick={handleGotoLastPageClick}>&rsaquo;&rsaquo;</li>
     }
 
     let pageDecrementEllipses = null
     if (minPageLimit >= 1) {
-        pageDecrementEllipses = <li className='text-white cursor-pointer' onClick={handleGotoFirstPageClick}>&hellip;</li>
+        pageDecrementEllipses = <li className='text-white cursor-pointer' onClick={handleGotoFirstPageClick}>&lsaquo;&lsaquo;</li>
     }
 
     return (

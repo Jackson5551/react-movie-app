@@ -27,6 +27,8 @@ const Results = () => {
         if(query !== searchQuery){
             setSearchQuery(query)
             setCurrentPage(1)
+            setMaxPageLimit(5)
+            setMinPageLimit(0)
         }
     }, [currentPage,searchQuery, query])
 

@@ -63,7 +63,7 @@ const Movie = () => {
         vote_average,
         vote_count
     } = movieData
-    let backdropImageUrl = `https://image.tmdb.org/t/p/original${backdrop_path}`
+    let backdropImageUrl = `https://image.tmdb.org/t/p/original${backdrop_path && backdrop_path}`
     let posterImageUrl = `https://image.tmdb.org/t/p/w500${poster_path}`
 
     let releaseDateFormatted = new Date(release_date)
@@ -79,7 +79,7 @@ const Movie = () => {
         return (
             <>
                 <Navbar></Navbar>
-                <div className='bg-slate-600'>
+                <div className='bg-gradient-to-r from-[#01b4e4] to-[#90cea1]'>
                     <div
                         style={{
                             'var(--image-url)': backdropImageUrl,
@@ -89,20 +89,13 @@ const Movie = () => {
                         className="w-full h-full bg-center bg-cover bg-no-repeat bg-fixed">
                         <div className='backdrop-blur-lg bg-slate-800/50 p-2 h-full min-h-screen'>
                             <div className='flex h-full w-full min-h-[50vh] max-md:flex-col max-md:items-center'>
+                                {poster_path && 
                                 <div className='max-md:m-5'>
                                     {/* <p>{tagline}</p> */}
                                     <img src={`https://image.tmdb.org/t/p/w500${poster_path}`}
                                         className='rounded-2xl min-w-96'></img>
-                                    {/* <div
-                                style={{
-                                    'backgroundImage': `url(${posterImageUrl})`
-                                }}
-                                className='w-96 h-full bg-center bg-contain bg-no-repeat drop-shadow-2xl'>
-
-                            </div> */}
-
-                                </div>
-                                <div className='flex-col ml-2 w-full'>
+                                </div>}
+                                <div className={`flex-col w-full ${poster_path ? 'ml-2' : ''}`}>
                                     <div className='text-slate-400 bg-slate-800 p-5 h-fit mb-2 rounded-2xl'>
                                         <span><a href={homepage} target='_blank'><h1 className="text-4xl text-white hover:text-blue-600">{title} ({releaseDateFormatted.getFullYear()})</h1></a><p className='italic'>{tagline}</p></span>
                                         {/* <p>{release_date}</p> */}
