@@ -83,7 +83,7 @@ const Person = () => {
                                     <img src={`https://image.tmdb.org/t/p/w500${profile_path}`}
                                         className='rounded-2xl min-w-96'></img>
                                 </div>}
-                                <div className={`flex-col w-full ${profile_path ? 'ml-2' : ''}`}>
+                                <div className={`flex-col w-full ${profile_path ? 'ml-2' : ''} max-sm:ml-0`}>
                                     <div className='text-slate-400 bg-slate-800 p-5 h-fit mb-2 rounded-2xl'>
                                         <span><a href={homepage} target='_blank'><h1 className="text-4xl text-white hover:text-blue-600">{name}</h1></a><p className='italic'>{known_for_department}</p></span>
                                         {/* <p>{release_date}</p> */}

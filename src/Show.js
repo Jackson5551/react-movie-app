@@ -96,7 +96,7 @@ const Show = () => {
                     <img src={`https://image.tmdb.org/t/p/w500${poster_path}`}
                       className='rounded-2xl min-w-96'></img>
                   </div>}
-                <div className={`flex-col w-full ${poster_path ? 'ml-2' : ''}`}>
+                <div className={`flex-col w-full ${poster_path ? 'ml-2' : ''} max-sm:ml-0`}>
                   <div className='text-slate-400 bg-slate-800 p-5 h-fit mb-2 rounded-2xl'>
                     <span><a href={homepage} target='_blank'><h1 className="text-4xl text-white hover:text-blue-600">{name}</h1></a><p className='italic'>{tagline}</p></span>
                     {/* <p>{release_date}</p> */}
@@ -249,7 +249,7 @@ const Show = () => {
                 {credits ? <div className='flex justify-center max-md:flex-col'>
                   <div className='m-1'>
                     {credits.cast.length > 0 && <h1 className='text-white text-2xl text-center'>Cast</h1>}
-                    {credits.cast.map(credit => {
+                    {credits.cast.length > 0 && credits.cast.map(credit => {
                       return (
                         <Link to={`/people/${credit.id}`}>
 
@@ -267,7 +267,7 @@ const Show = () => {
                   </div>
                   <div className='m-1'>
                     {credits.crew.length > 0 && <h1 className='text-white text-2xl text-center'>Crew</h1>}
-                    {credits.crew.map(credit => {
+                    {credits.crew.length > 0 && credits.crew.map(credit => {
                       return (
                         <Link to={`/people/${credit.id}`}>
                           <div className='flex justify-start items-center p-3 bg-slate-800 text-white m-1 w-full hover:bg-slate-700 cursor-pointer rounded-2xl'>

@@ -35,7 +35,7 @@ const Movies = () => {
                 <li className='m-3 box-border'>
                   <Link to={`/movies/${movie.id}`}>
                     {movie.poster_path ? <img src={imgUrl}
-                      className='w-96 h-full min-h-[550px] max-h-full hover:shadow-2xl border-solid border-transparent border-2 hover:shadow-white/50 hover:border-solid hover:border-white hover:border-2 box-border hover:box-border rounded-2xl'
+                      className='w-96 h-full hover:shadow-2xl border-solid border-transparent border-2 hover:shadow-white/50 hover:border-solid hover:border-white hover:border-2 box-border hover:box-border rounded-2xl'
                       alt={movie.title}></img> : <div className='flex justify-center items-center w-96 bg-slate-600 h-full text-white border-solid border-transparent border-2 hover:shadow-2xl hover:shadow-white/50 hover:border-solid hover:border-white hover:border-2 box-border hover:box-border rounded-2xl'><p>{movie.title}</p></div>}
                   </Link>
                 </li>)

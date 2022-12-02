@@ -36,7 +36,7 @@ const People = () => {
                                             {person.profile_path ? <div className='relative hover:shadow-2xl border-solid border-transparent border-2 hover:shadow-white/50 hover:border-solid hover:border-white hover:border-2 box-border hover:box-border rounded-2xl'> <img
                                                 src={imgUrl}
                                                 title={person.name}
-                                                className='w-96 h-full min-h-[550px] max-h-full rounded-2xl border-solid border-transparent border-2'
+                                                className='w-96 h-full rounded-2xl border-solid border-transparent border-2'
                                                 alt={person.name}>
                                                 </img> <p
                                                     className='absolute text-3xl text-center text-white top-3/4 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-600/90 p-6 rounded-xl'>{person.name}</p></div> : <div className='flex justify-center items-center w-96 bg-slate-600 h-full text-white border-solid border-transparent border-2 hover:shadow-2xl hover:shadow-white/50 hover:border-solid hover:border-white hover:border-2 box-border hover:box-border rounded-2xl'><p>{person.name}</p></div>}
