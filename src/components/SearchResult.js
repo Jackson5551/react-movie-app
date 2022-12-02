@@ -24,7 +24,7 @@ const SearchResult = ({ results }) => {
                                     className='w-96 h-full min-h-[550px] max-h-full hover:shadow-2xl border-solid border-transparent border-2 hover:shadow-white/50 hover:border-solid hover:border-white hover:border-2 box-border hover:box-border rounded-2xl'
                                     alt={result.title}></img> : <div className='relative hover:shadow-2xl border-solid border-transparent border-2 hover:shadow-white/50 hover:border-solid hover:border-white hover:border-2 box-border hover:box-border rounded-2xl'>
                                     <img src={empty}
-                                        className='w-96 h-full min-h-[550px] max-h-full rounded-2xl border-solid border-transparent border-2'></img><p className='absolute text-3xl text-center text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6'>{result.title}</p></div>}
+                                            className='w-96 h-full min-h-[550px] max-h-full rounded-2xl border-solid border-transparent border-2'></img><p className='absolute text-3xl text-center text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6'>{result.title}</p></div>}
                             </Link>
                         </li>
                         if (result.media_type === 'tv') return <li className='m-3 box-border'>
@@ -42,7 +42,7 @@ const SearchResult = ({ results }) => {
                                 {result.profile_path ? <div className='relative hover:shadow-2xl border-solid border-transparent border-2 hover:shadow-white/50 hover:border-solid hover:border-white hover:border-2 box-border hover:box-border rounded-2xl'>
                                 <img src={`https://image.tmdb.org/t/p/w500${result.profile_path}`}
                                         className='w-96 h-full min-h-[550px] max-h-full rounded-2xl border-solid border-transparent border-2'
-                                        alt={result.name}></img> <p className='absolute text-3xl text-center text-white top-3/4 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-600/90 p-6 rounded-xl'>{result.name}</p></div> 
+                                        alt={result.name}></img> <p className='absolute text-3xl text-center text-white top-3/4 left-1/2 w-3/4 -translate-x-1/2 -translate-y-1/2 bg-slate-800/95 p-6 rounded-xl'>{result.name}</p></div> 
                                     : <div className='relative hover:shadow-2xl border-solid border-transparent border-2 hover:shadow-white/50 hover:border-solid hover:border-white hover:border-2 box-border hover:box-border rounded-2xl'>
                                             <img src={empty}
                                             className='w-96 h-full min-h-[550px] max-h-full rounded-2xl border-solid border-transparent border-2'></img><p className='absolute text-3xl text-center text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6'>{result.name}</p></div>}

@@ -98,8 +98,10 @@ const Person = () => {
                                     <div className='flex flex-col text-center'>
                                         <span className='text-white text-lg'>Birthday</span>
                                         
+                                            {!deathday ? 
                                             <span className='text-sm'>
-                                                {formatted_birthday.toDateString()} ({current_age(birthday)} years)</span>
+                                                {formatted_birthday.toDateString()} ({current_age(birthday)} years)</span> 
+                                                : <span className='text-sm'>{formatted_birthday.toDateString()}</span>}
                                     </div>
                                     <div className='flex flex-col text-center'>
                                         <span className='text-white text-lg'>Place of Birth</span>

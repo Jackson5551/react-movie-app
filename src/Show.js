@@ -129,41 +129,41 @@ const Show = () => {
                     </div>}
                   </div>
                   <div className='flex justify-between'>
-                  {watchProviders ?
-                    <div className='h-fit p-5 text-white flex-col'>
-                      {networks && <><h1>Networks</h1><div className='flex h-fit p-1 flex-wrap'>
-                        {networks.map(network => {
-                          return (
-                            <img src={`https://image.tmdb.org/t/p/original${network.logo_path}`} className='h-6 m-1'></img>
-                          )
-                        })}
-                      </div></>}
-                      {watchProviders.buy && <h1>Buy</h1>}
-                      <div className='flex h-fit p-1 flex-wrap'>
-                        {watchProviders.buy?.map(provider => {
-                          return (
-                            <img src={`https://image.tmdb.org/t/p/original${provider.logo_path}`} className='rounded-2xl w-12 m-1'></img>
-                          )
-                        })}
+                    {watchProviders ?
+                      <div className='h-fit p-5 text-white flex-col'>
+                        {networks && <><h1>Networks</h1><div className='flex h-fit p-1 flex-wrap'>
+                          {networks.map(network => {
+                            return (
+                              <img src={`https://image.tmdb.org/t/p/original${network.logo_path}`} className='h-6 m-1'></img>
+                            )
+                          })}
+                        </div></>}
+                        {watchProviders.buy && <h1>Buy</h1>}
+                        <div className='flex h-fit p-1 flex-wrap'>
+                          {watchProviders.buy?.map(provider => {
+                            return (
+                              <img src={`https://image.tmdb.org/t/p/original${provider.logo_path}`} className='rounded-2xl w-12 m-1'></img>
+                            )
+                          })}
+                        </div>
+                        {watchProviders.flatrate && <h1>Subscription</h1>}
+                        <div className='flex h-fit p-1 flex-wrap'>
+                          {watchProviders.flatrate?.map(provider => {
+                            return (
+                              <img src={`https://image.tmdb.org/t/p/original${provider.logo_path}`} className='rounded-2xl w-12 m-1'></img>
+                            )
+                          })}
+                        </div>
+                        {watchProviders.rent && <h1>Rent</h1>}
+                        <div className='flex h-fit p-1 flex-wrap'>
+                          {watchProviders.rent?.map(provider => {
+                            return (
+                              <img src={`https://image.tmdb.org/t/p/original${provider.logo_path}`} className='rounded-2xl w-12 m-1'></img>
+                            )
+                          })}
+                        </div>
                       </div>
-                      {watchProviders.flatrate && <h1>Subscription</h1>}
-                      <div className='flex h-fit p-1 flex-wrap'>
-                        {watchProviders.flatrate?.map(provider => {
-                          return (
-                            <img src={`https://image.tmdb.org/t/p/original${provider.logo_path}`} className='rounded-2xl w-12 m-1'></img>
-                          )
-                        })}
-                      </div>
-                      {watchProviders.rent && <h1>Rent</h1>}
-                      <div className='flex h-fit p-1 flex-wrap'>
-                        {watchProviders.rent?.map(provider => {
-                          return (
-                            <img src={`https://image.tmdb.org/t/p/original${provider.logo_path}`} className='rounded-2xl w-12 m-1'></img>
-                          )
-                        })}
-                      </div>
-                    </div>
-                    : <div className='text-white flex justify-center items-center w-full h-full'>No watch providers available</div>}
+                      : <div className='text-white flex justify-center items-center w-full h-full'>No watch providers available</div>}
                   </div>
                 </div>
               </div>
@@ -227,25 +227,25 @@ const Show = () => {
 
                   </div>
                 </div>
-                {recommendations && recommendations.length > 0 && 
-                <div className='flex justify-center mt-2'>
-                  <div className='bg-slate-800 rounded-2xl w-full p-5 text-white text-center text-lg'>
-                    <span>You might also be interested in...</span>
-                    <div className='flex justify-center flex-wrap'>
-                      {recommendations && recommendations.map(recommendation => {
-                        return (
-                          <div className='m-1'>
-                            <Link to={`/tvshows/${recommendation.id}`}>
-                              <img title={`${recommendation.name}`} src={`https://image.tmdb.org/t/p/w500${recommendation.poster_path}`}
-                                className='w-28 rounded-xl min-h-full border-solid border-2 border-transparent hover:border-white'></img>
-                            </Link>
-                          </div>
-                        )
-                      })}
-                    </div>
+                {recommendations && recommendations.length > 0 &&
+                  <div className='flex justify-center mt-2'>
+                    <div className='bg-slate-800 rounded-2xl w-full p-5 text-white text-center text-lg'>
+                      <span>You might also be interested in...</span>
+                      <div className='flex justify-center flex-wrap'>
+                        {recommendations && recommendations.map(recommendation => {
+                          return (
+                            <div className='m-1'>
+                              <Link to={`/tvshows/${recommendation.id}`}>
+                                <img title={`${recommendation.name}`} src={`https://image.tmdb.org/t/p/w500${recommendation.poster_path}`}
+                                  className='w-28 rounded-xl min-h-full border-solid border-2 border-transparent hover:border-white'></img>
+                              </Link>
+                            </div>
+                          )
+                        })}
+                      </div>
 
-                  </div>
-                </div>}
+                    </div>
+                  </div>}
                 {credits ? <div className='flex justify-center max-md:flex-col'>
                   <div className='m-1'>
                     {credits.cast.length > 0 && <h1 className='text-white text-2xl text-center'>Cast</h1>}
@@ -282,15 +282,7 @@ const Show = () => {
                     })}
                   </div>
 
-                </div> : <div>Nothing to display</div>}
-                {/* <div className='flex flex-wrap'>
-            {seasons && seasons.map(season=>{
-              return(
-                season.poster_path && <img src={`https://image.tmdb.org/t/p/original${season.poster_path}`} className='w-60 flex-wrap'></img>
-              )
-            })}
-          </div> */}
-
+                </div> : <div></div>}
               </div>
             </div>
           </div>

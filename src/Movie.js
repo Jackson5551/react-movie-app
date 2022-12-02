@@ -97,7 +97,7 @@ const Movie = () => {
                                 </div>}
                                 <div className={`flex-col w-full ${poster_path ? 'ml-2' : ''} max-sm:ml-0`}>
                                     <div className='text-slate-400 bg-slate-800 p-5 h-fit mb-2 rounded-2xl'>
-                                        <span><a href={homepage} target='_blank'><h1 className="text-4xl text-white hover:text-blue-600">{title} ({releaseDateFormatted.getFullYear()})</h1></a><p className='italic'>{tagline}</p></span>
+                                        <span><a href={homepage} target='_blank'><h1 className="text-4xl text-white hover:text-blue-600">{title} ({release_date ? releaseDateFormatted.getFullYear(): 'N/A'})</h1></a><p className='italic'>{tagline}</p></span>
                                         {/* <p>{release_date}</p> */}
                                         <div className='flex items-center text-slate-500'>
 
@@ -125,13 +125,13 @@ const Movie = () => {
                                             <p className=''>{formatTime(runtime)}</p>
                                             <p className='p-1'> &bull; </p>
                                             <p className=''>
-                                                {genres.map((genre, index) => {
+                                                {genres && genres.map((genre, index) => {
                                                     return (<Link>{`${index ? ', ' : ''}`}<span className='hover:text-blue-600'>{genre.name}</span></Link>)
                                                 })}
                                             </p>
                                         </div>
                                         <p>{overview}</p>
-                                        {production_companies.length >= 1 && <div className='text-xs mt-5'>
+                                        {production_companies && production_companies.length >= 1 && <div className='text-xs mt-5'>
                                             <p>
                                                 <span className='text-white'>Producers:</span>
                                                 {production_companies.map((company, index) => {
@@ -253,7 +253,7 @@ const Movie = () => {
                                         })}
                                     </div>
 
-                                </div> : <div>Nothing to display</div>}
+                                </div> : <div></div>}
                             </div>
                         </div>
                     </div>
