@@ -5,16 +5,17 @@ import Search from './Search'
 const Navbar = () => {
   return (
     <div className='flex justify-around bg-slate-800 text-white h-fit max-sm:flex-col'>
-      <div className='flex justify-center items-center hover:text-blue-600'>
-        {/* <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-film" viewBox="0 0 16 16">
-          <path d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0v6h8V1H4zm8 8H4v6h8V9zM1 1v2h2V1H1zm2 3H1v2h2V4zM1 7v2h2V7H1zm2 3H1v2h2v-2zm-2 3v2h2v-2H1zM15 1h-2v2h2V1zm-2 3v2h2V4h-2zm2 3h-2v2h2V7zm-2 3v2h2v-2h-2zm2 3h-2v2h2v-2z" />
-        </svg> */}
+      <div className='flex justify-center items-center'>
+
 
         <NavLink to={`/`}
-          className='p-2 text-3xl flex justify-between items-center'>
-          <img
+          className='p-2 text-4xl flex justify-between items-center text-transparent bg-clip-text bg-gradient-to-r from-[#01b4e4] to-[#90cea1] rounded-2xl'>
+          {/* <img
             src='https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_1-5bdc75aaebeb75dc7ae79426ddd9be3b2be1e342510f8202baf6bffa71d7f5c4.svg'
-            className='h-[48px] m-1'></img></NavLink>
+            className='h-[48px] m-1'></img> */}
+          <i class="bi bi-film"></i>
+            <span className='p-2'>MovieDb</span>
+            </NavLink>
       </div>
       <div className='flex flex-col items-center justify-center text-slate-400'>
         <div className='flex justify-center items-center text-white text-sm'>Today's top: </div>

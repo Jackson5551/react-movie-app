@@ -16,19 +16,20 @@ const Results = () => {
 
     let { query, page } = useParams()
     let navigate = useNavigate()
-
     useEffect(() => {
         setLoading(true)
         setSearchQuery(query)
+        if (searchQuery !== query) {
+            setCurrentPage(1);            
+            setMaxPageLimit(5);
+            setMinPageLimit(0);
+}
         fetch(`https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_TMDB_API_KEY}&include_adult=false&query=${query}&page=${currentPage}`)
             .then((res) => res.json())
             .then((json) => { setSearchData(json); setLoading(false); console.log(json)})
 
         if(query !== searchQuery){
             setSearchQuery(query)
-            setCurrentPage(1)
-            setMaxPageLimit(5)
-            setMinPageLimit(0)
         }
     }, [currentPage,searchQuery, query])
 

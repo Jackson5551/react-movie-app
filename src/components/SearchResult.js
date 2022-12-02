@@ -12,7 +12,7 @@ const SearchResult = ({ results }) => {
                     className='flex justify-center'>
                     <h1 className='text-white text-2xl p-2'>Results for "{query}"</h1>
                 </div>
-                <ul className='flex flex-wrap justify-center box-border'>
+                <ul className='flex flex-wrap justify-center box-border text-center'>
                     {results.map((result) => {
                         // <img src={`https://image.tmdb.org/t/p/w500/${results.poster_path}`}></img>
                         let imgUrl = `https://image.tmdb.org/t/p/w500${result.poster_path}`
@@ -21,7 +21,7 @@ const SearchResult = ({ results }) => {
                             <Link to={`/movies/${result.id}`}>
                                 {result.poster_path ? <img src={imgUrl}
                                     className='w-96 h-full min-h-[550px] max-h-full hover:shadow-2xl border-solid border-transparent border-2 hover:shadow-white/50 hover:border-solid hover:border-white hover:border-2 box-border hover:box-border rounded-2xl'
-                                    alt={result.title}></img> : <div className='flex justify-center items-center w-96 bg-slate-600 h-full text-white border-solid border-transparent border-2 hover:shadow-2xl hover:shadow-white/50 hover:border-solid hover:border-white hover:border-2 box-border hover:box-border rounded-2xl'><p>{result.title}</p></div>}
+                                    alt={result.title}></img> : <div className='flex justify-center items-center w-96 bg-slate-600 h-full min-h-[550px] text-white border-solid border-transparent border-2 hover:shadow-2xl hover:shadow-white/50 hover:border-solid hover:border-white hover:border-2 box-border hover:box-border rounded-2xl'><p>{result.title}</p></div>}
                             </Link>
                         </li>
                         if (result.media_type === 'tv') return <li className='m-3 box-border'>

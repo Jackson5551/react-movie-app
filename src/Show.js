@@ -128,6 +128,7 @@ const Show = () => {
                       </p>
                     </div>}
                   </div>
+                  <div className='flex justify-between'>
                   {watchProviders ?
                     <div className='h-fit p-5 text-white flex-col'>
                       {networks && <><h1>Networks</h1><div className='flex h-fit p-1 flex-wrap'>
@@ -162,7 +163,8 @@ const Show = () => {
                         })}
                       </div>
                     </div>
-                    : <div className='text-white'>No watch providers available</div>}
+                    : <div className='text-white flex justify-center items-center w-full h-full'>No watch providers available</div>}
+                  </div>
                 </div>
               </div>
               <div className='h-full w-full bg-'>
@@ -186,15 +188,15 @@ const Show = () => {
                   <div className='bg-slate-800 rounded-2xl w-full p-5 flex justify-around text-slate-400 max-sm:flex-col'>
                     <div className='flex flex-col text-center'>
                       <span className='text-white text-lg'>Status</span>
-                      <span className='text-sm'>{status}</span>
+                      <span className='text-sm'>{status ? status : '-'}</span>
                     </div>
                     <div className='flex flex-col text-center'>
                       <span className='text-white text-lg'>Original Language</span>
-                      <span className='text-sm'>{original_language}</span>
+                      <span className='text-sm'>{original_language ? original_language : '-'}</span>
                     </div>
                     <div className='flex flex-col text-center'>
                       <span className='text-white text-lg'>First Aired</span>
-                      <span className='text-sm'>{first_air_date}</span>
+                      <span className='text-sm'>{first_air_date ? first_air_date : '-'}</span>
                     </div>
                     <div className='flex flex-col text-center'>
                       {!next_episode_to_air ?
@@ -225,6 +227,7 @@ const Show = () => {
 
                   </div>
                 </div>
+                {recommendations && recommendations.length > 0 && 
                 <div className='flex justify-center mt-2'>
                   <div className='bg-slate-800 rounded-2xl w-full p-5 text-white text-center text-lg'>
                     <span>You might also be interested in...</span>
@@ -242,7 +245,7 @@ const Show = () => {
                     </div>
 
                   </div>
-                </div>
+                </div>}
                 {credits ? <div className='flex justify-center max-md:flex-col'>
                   <div className='m-1'>
                     {credits.cast.length > 0 && <h1 className='text-white text-2xl text-center'>Cast</h1>}

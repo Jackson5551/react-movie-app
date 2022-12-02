@@ -170,7 +170,7 @@ const Movie = () => {
                                                     })}
                                                 </div>
                                             </div>
-                                            : <div className='text-white'>No watch providers available</div>}
+                                            : <div className='text-white flex justify-center items-center w-full h-full'>No watch providers available</div>}
                                     </div>
                                     {/* <div className='bg-slate-800 p-5 h-fit'>
                             <p>{budget}, {}</p>
@@ -181,11 +181,11 @@ const Movie = () => {
                                 <div className='bg-slate-800 rounded-xl w-full p-5 flex justify-around text-slate-400 max-sm:flex-col'>
                                     <div className='flex flex-col text-center'>
                                         <span className='text-white text-lg'>Status</span>
-                                        <span className='text-sm'>{status}</span>
+                                        <span className='text-sm'>{status ? status : '-'}</span>
                                     </div>
                                     <div className='flex flex-col text-center'>
                                         <span className='text-white text-lg'>Original Language</span>
-                                        <span className='text-sm'>{original_language}</span>
+                                        <span className='text-sm'>{original_language ? original_language : '-'}</span>
                                     </div>
                                     <div className='flex flex-col text-center'>
                                         <span className='text-white text-lg'>Budget</span>
@@ -197,6 +197,7 @@ const Movie = () => {
                                     </div>
                                 </div>
                             </div>
+                            {recommendations && recommendations.length > 0 && 
                             <div className='flex justify-center mt-2'>
                                 <div className='bg-slate-800 rounded-xl w-full p-5 text-white text-center text-lg'>
                                     <span>You might also be interested in...</span>
@@ -215,11 +216,11 @@ const Movie = () => {
                                     </div>
 
                                 </div>
-                            </div>
+                            </div>}
                             <div className='h-full w-full'>
                                 {credits ? <div className='flex justify-center max-md:flex-col'>
                                     <div className='m-1'>
-                                        <h1 className='text-white text-2xl text-center'>Cast</h1>
+                                        {credits.cast.length > 0 && <h1 className='text-white text-2xl text-center'>Cast</h1>}
                                         {credits.cast.map(credit => {
                                             return (
                                                 <Link to={`/people/${credit.id}`}>
@@ -236,7 +237,7 @@ const Movie = () => {
                                         })}
                                     </div>
                                     <div className='m-1'>
-                                        <h1 className='text-white text-2xl text-center'>Crew</h1>
+                                        {credits.crew.length > 0 && <h1 className='text-white text-2xl text-center'>Crew</h1>}
                                         {credits.crew.map(credit => {
                                             return (
                                                 <Link to={`/people/${credit.id}`}>
