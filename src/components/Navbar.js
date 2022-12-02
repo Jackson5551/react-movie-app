@@ -24,6 +24,7 @@ const Navbar = () => {
             <NavLink to={`/movies`}
               className='p-2 text-xl'>Movies</NavLink>
           </div>
+
           <div className='flex justify-center items-center hover:text-blue-600'>
             <NavLink to={`/tvshows`}
               className='p-2 text-xl'>TV</NavLink>
