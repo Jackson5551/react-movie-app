@@ -1,12 +1,17 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, Outlet, useNavigate, useParams } from 'react-router-dom'
+import { SearchQueryContext } from '../context/SearchQueryContext'
 import useTMDB from '../hooks/useTMDB'
 
 const Search = ({ value }) => {
 
+    const {searchQuery, setSearchQuery} = useContext(SearchQueryContext)
+
+    const {query, searchCategory} = useParams()
+
     const navigate = useNavigate()
     const [searchCategory2, setSearchCategory] = useState('multi')
-    const [query, setQuery] = useState('')
+    const [query_, setQuery] = useState(query)
     // const [searchData, setSearchData] = useState(null)
     // const [loading, setLoading] = useState(true)
     // const [resultsPage, setResultsPage] = useState(1)
@@ -25,8 +30,8 @@ const Search = ({ value }) => {
     // console.log(searchData)
     const handleSubmit = event => {
         event.preventDefault()
-        navigate(`/search/${query}/${searchCategory2}`)
-        
+        navigate(`/search/${query_}/${searchCategory2}`)
+
     }
     return (
         <div className='h-fit p-5 m-5 w-full max-sm:w-full max-sm:m-0 text-xs'>
@@ -42,12 +47,14 @@ const Search = ({ value }) => {
                             <option value={'movie'}>Movies</option>
                             <option value={'tv'}>TV</option>
                             <option value={'person'}>People</option>
-                            <option value={'collection'}>Collections</option>
+                            {/* <option value={'collection'}>Collections</option> */}
                         </select>
                     </div>
                     <div
                         className='relative w-full'>
-                        <input type="text" class="block p-2 w-full text-xs text-slate-800 bg-white border-solid border-2 border-transparent focus:ring-transparent focus:border-blue-500 max-sm:rounded-xl" placeholder="Search Movies, TV Shows, People..." required onChange={(e) => setQuery(e.target.value)}></input>
+
+                            <input type="text" class="block p-2 w-full text-xs text-slate-800 bg-white border-solid border-2 border-transparent focus:ring-transparent focus:border-blue-500 max-sm:rounded-xl" placeholder="Search Movies, TV Shows, People..." value={query_} required onChange={(e) => {setQuery(e.target.value); setSearchQuery(e.target.value)}}></input>
+
                     </div>
                     <div className='max-sm:relative max-sm:w-full max-sm:p-2'>
                         <button

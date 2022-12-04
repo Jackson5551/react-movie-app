@@ -80,7 +80,7 @@ const Show = () => {
     return (
       <>
         <Navbar></Navbar>
-        <div className='bg-gradient-to-r from-[#01b4e4] to-[#90cea1]'>
+        <div className='bg-gradient-to-r from-cyan-500 to-blue-500'>
           <div
             style={{
               'var(--image-url)': backdropImageUrl,
@@ -110,7 +110,7 @@ const Show = () => {
                       <p className=''>{number_of_seasons} {number_of_seasons <= 1 ? 'Season' : 'Seasons'}</p>
                       <p className='p-1'> &bull; </p>
                       <p className=''>
-                        {genres.map((genre, index) => {
+                        {genres && genres.map((genre, index) => {
                           return <Link className=''>{`${index ? ', ' : ''}`}<span className='hover:text-blue-600'>{genre.name}</span></Link>
                         })}
                       </p>

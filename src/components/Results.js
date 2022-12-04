@@ -18,20 +18,28 @@ const Results = () => {
     let navigate = useNavigate()
     useEffect(() => {
         setLoading(true)
+        setCurrentPage(1)
 
-        if (searchQuery !== query && currentPage !== 1) {
-            setCurrentPage(1);
-            setMaxPageLimit(5);
-            setMinPageLimit(0);
-        }
-        setSearchQuery(query)
-            fetch(`https://api.themoviedb.org/3/search/${searchCategory}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&include_adult=false&query=${query}&page=${currentPage}`)
-                .then((res) => res.json())
-                .then((json) => { setSearchData(json); setLoading(false); console.log(json) })
-        if (query !== searchQuery) {
-            setSearchQuery(query)
-        }
-    }, [currentPage, searchQuery, query, searchCategory])
+        // if (searchQuery !== query && currentPage !== 1) {
+        //     setCurrentPage(1);
+        setMaxPageLimit(5);
+        setMinPageLimit(0);
+        //     setSearchQuery(query)
+        // }
+        // setSearchQuery(query)
+        fetch(`https://api.themoviedb.org/3/search/${searchCategory}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&include_adult=false&query=${query}&page=1`)
+            .then((res) => res.json())
+            .then((json) => { setSearchData(json); setLoading(false); console.log(json) })
+        // if (query !== searchQuery) {
+        //     setSearchQuery(query)
+        // }
+    }, [query, searchCategory])
+    useEffect(() => {
+        setLoading(true)
+        fetch(`https://api.themoviedb.org/3/search/${searchCategory}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&include_adult=false&query=${query}&page=${currentPage}`)
+            .then((res) => res.json())
+            .then((json) => { setSearchData(json); setLoading(false); console.log(json) })
+    }, [currentPage])
 
     const onPageChange = (pageNumber) => {
         setCurrentPage(pageNumber)

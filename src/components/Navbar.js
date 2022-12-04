@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import Search from './Search'
+import { SearchQueryContext } from '../context/SearchQueryContext'
+
 
 const Navbar = () => {
+  const {searchQuery} = useContext(SearchQueryContext)
   return (
     <div className='flex justify-around bg-slate-800 text-white h-fit max-sm:flex-col'>
       <div className='flex justify-center items-center'>
 
 
         <NavLink to={`/`}
-          className='p-2 text-4xl flex justify-between items-center text-transparent bg-clip-text bg-gradient-to-r from-[#01b4e4] to-[#90cea1] rounded-2xl'>
+          className='p-2 text-4xl flex justify-between items-center text-transparent bg-clip-text bg-gradient-to-l from-blue-500 to-cyan-500 rounded-2xl'>
           {/* <img
             src='https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_1-5bdc75aaebeb75dc7ae79426ddd9be3b2be1e342510f8202baf6bffa71d7f5c4.svg'
             className='h-[48px] m-1'></img> */}
@@ -36,7 +39,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className='w-[50%] max-sm:w-[100%]'>
-        <Search></Search>
+        <Search value={searchQuery}></Search>
       </div>
     </div>
   )

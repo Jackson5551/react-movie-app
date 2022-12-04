@@ -21,7 +21,7 @@ const Movies = () => {
     return (
       <>
         <Navbar></Navbar>
-        <div className='w-full h-full bg-gradient-to-r from-[#01b4e4] to-[#90cea1]'>
+        <div className='w-full h-full bg-gradient-to-r from-cyan-500 to-blue-500'>
         <div className='min-w-full min-h-full bg-slate-800/90'>
           <div
             className='flex justify-center'>
