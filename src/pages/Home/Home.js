@@ -1,8 +1,8 @@
 import React, { useContext, useMemo, useState } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
-import Navbar from './components/Navbar'
-import Search from './components/Search'
-import { SearchQueryContext } from './context/SearchQueryContext'
+import Navbar from '../../components/Navbar'
+import Search from '../../components/Search'
+import { SearchQueryContext } from '../../context/SearchQueryContext'
 
 const MovieApp = () => {
   const navigate = useNavigate()

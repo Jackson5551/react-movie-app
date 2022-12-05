@@ -2,16 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
-import Movie from './Movie';
-import Show from './Show';
-import SearchResults from './SearchResults';
-import Results from './components/Results';
+import Movie from './pages/Movies/Movie';
+import Show from './pages/TV/Show';
+import Results from './pages/Search/Results';
 import './index.css'
-import Person from './Person';
-import Movies from './Movies';
-import TVShows from './TVShows';
-import People from './People';
-import Collection from './Collection';
+import Person from './pages/People/Person';
+import Movies from './pages/Movies/Movies';
+import TVShows from './pages/TV/TVShows';
+import People from './pages/People/People';
+import Collection from './pages/Collections/Collection';
 
 const router = createBrowserRouter([
   {

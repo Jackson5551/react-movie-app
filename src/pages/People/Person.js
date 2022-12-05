@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import Navbar from './components/Navbar'
-import Loading from './Loading'
+import Navbar from '../../components/Navbar'
+import Loading from '../../Loading'
 
 const Person = () => {
     const [personData, setPersonData] = useState({})

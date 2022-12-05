@@ -1,11 +1,11 @@
-import MovieApp from "./MovieApp";
+import Home from "./pages/Home/Home";
 import React from "react";
 import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <>
-    <MovieApp></MovieApp>
+    <Home></Home>
     </>
   );
 }

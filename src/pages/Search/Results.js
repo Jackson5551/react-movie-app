@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import Loading from '../Loading'
-import Navbar from './Navbar'
+import Loading from '../../Loading'
+import Navbar from '../../components/Navbar'
 import Pagination from './Pagination'
-import Search from './Search'
 
 const Results = () => {
     const pageNumberLimit = 5

@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { LocationContext } from './context/LocationContext'
-import Loading from './Loading'
-import { formatTime } from './helpers/formatTime'
-import { formatCurrency } from './helpers/formatCurrency'
-import Navbar from './components/Navbar'
+import { LocationContext } from '../../context/LocationContext'
+import Loading from '../../Loading'
+import { formatTime } from '../../utils/formatTime'
+import { formatCurrency } from '../../utils/formatCurrency'
+import Navbar from '../../components/Navbar'
 
 const Show = () => {
   const [showData, setShowData] = useState({})
