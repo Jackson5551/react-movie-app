@@ -6,6 +6,7 @@ import Loading from '../../Loading'
 import { formatTime } from '../../utils/formatTime'
 import { formatCurrency } from '../../utils/formatCurrency'
 import Navbar from '../../components/Navbar'
+import useTMDb from '../../hooks/useTMDb'
 
 const Movie = () => {
     const [movieData, setMovieData] = useState({})
@@ -17,6 +18,7 @@ const Movie = () => {
 
     let { movieId } = useParams()
 
+    // useTMDb(urls,states)
     useEffect(() => {
         setLoading(true)
         fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`)

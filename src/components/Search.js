@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { Link, Outlet, useNavigate, useParams } from 'react-router-dom'
 import { SearchQueryContext } from '../context/SearchQueryContext'
-import useTMDB from '../hooks/useTMDB'
+
 
 const Search = ({ value }) => {
 

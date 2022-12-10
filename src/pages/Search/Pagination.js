@@ -1,18 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-import SearchResult from './SearchResult'
+import SearchResults from './SearchResults'
 
 const renderData = (data) => {
     return (
-        // <ul>
-        //     {data.results.map((result) => {
-        //         if (result.media_type === 'movie') return <li><Link to={`/movies/${result.id}`}>{result.title}</Link></li>
-        //         if (result.media_type === 'tv') return <li><Link to={`/tvshows/${result.id}`}>{result.name}</Link></li>
-        //         else return <li>{result.name}</li>
-        //     })}
-        // </ul>
-        <SearchResult results={data.results}></SearchResult>
+        <SearchResults results={data.results}></SearchResults>
     )
 }
 
@@ -75,40 +68,58 @@ const Pagination = (props) => {
 
     return (
         <div>
-            <ul className='flex justify-center items-center h-full w-full bg-slate-800 max-sm:flex-col'>
-                <li>
-                    <button
-                        className='p-2 m-2 text-white cursor-pointer disabled:hidden'
-                        onClick={handlePrevClick} disabled={(currentPage === pages[0])}>&larr; Prev</button>
-                </li>
-                {pageDecrementEllipses}
-                <div className='flex'>{pageNumbers}</div>
-                {pageIncrementEllipses}
-                <li>
-                    <button
-                        className='p-2 m-2 text-white cursor-pointer disabled:hidden'
-                        onClick={handleNextClick} disabled={currentPage === pages[pages.length - 1]}>Next &rarr;</button>
-                </li>
-            </ul>
+            <PaginationControls
+                handlePrevClick={handlePrevClick}
+                handleNextClick={handleNextClick}
+                currentPage={currentPage}
+                pages={pages}
+                pageDecrementEllipses={pageDecrementEllipses}
+                pageIncrementEllipses={pageIncrementEllipses}
+                pageNumbers={pageNumbers}
+            />
             <div>
                 {renderData(searchData)}
             </div>
-            <ul className='flex justify-center items-center h-full w-full bg-slate-800 max-sm:flex-col'>
-                <li>
-                    <button
-                        className='p-2 m-2 text-white cursor-pointer disabled:hidden'
-                        onClick={handlePrevClick} disabled={(currentPage === pages[0])}>&larr; Prev</button>
-                </li>
-                {pageDecrementEllipses}
-                <div className='flex'>{pageNumbers}</div>
-                {pageIncrementEllipses}
-                <li>
-                    <button
-                        className='p-2 m-2 text-white cursor-pointer disabled:hidden'
-                        onClick={handleNextClick} disabled={currentPage === pages[pages.length - 1]}>Next &rarr;</button>
-                </li>
-            </ul>
+            <PaginationControls
+                handlePrevClick={handlePrevClick}
+                handleNextClick={handleNextClick}
+                currentPage={currentPage}
+                pages={pages}
+                pageDecrementEllipses={pageDecrementEllipses}
+                pageIncrementEllipses={pageIncrementEllipses}
+                pageNumbers={pageNumbers}
+            />
         </div>
+    )
+}
+
+const PaginationControls = (props) => {
+
+    const {
+        handlePrevClick,
+        handleNextClick,
+        currentPage,
+        pages,
+        pageDecrementEllipses,
+        pageIncrementEllipses,
+        pageNumbers
+    } = props
+    return (
+        <ul className='flex justify-center items-center h-full w-full bg-slate-800 max-sm:flex-col'>
+            <li>
+                <button
+                    className='p-2 m-2 text-white cursor-pointer disabled:hidden'
+                    onClick={handlePrevClick} disabled={(currentPage === pages[0])}>&larr; Prev</button>
+            </li>
+            {pageDecrementEllipses}
+            <div className='flex'>{pageNumbers}</div>
+            {pageIncrementEllipses}
+            <li>
+                <button
+                    className='p-2 m-2 text-white cursor-pointer disabled:hidden'
+                    onClick={handleNextClick} disabled={currentPage === pages[pages.length - 1]}>Next &rarr;</button>
+            </li>
+        </ul>
     )
 }
 
