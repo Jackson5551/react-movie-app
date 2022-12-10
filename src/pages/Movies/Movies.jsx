@@ -8,9 +8,12 @@ const Movies = () => {
   const [popularMovies, setPopularMovies] = useState([])
   const [loading, setLoading] = useState(true)
 
+  const api_key = import.meta.env.VITE_TMDB_API_KEY;
+
+
   useEffect(() => {
     setLoading(true)
-    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`)
+    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=en-US`)
       .then((res) => res.json())
       .then((json) => { setPopularMovies(json); console.log(json); setLoading(false) })
   }, [])

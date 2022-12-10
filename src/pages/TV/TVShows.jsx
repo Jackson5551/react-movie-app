@@ -4,17 +4,21 @@ import Navbar from '../../components/Navbar'
 import Loading from '../../Loading'
 import ResultCard from '../../components/ResultCard'
 
-const People = () => {
-    const [popularPeople, setPopularPeople] = useState([])
+const TVShows = () => {
+    const [popularTV, setPopularTV] = useState([])
     const [loading, setLoading] = useState(true)
+
+    const api_key = import.meta.env.VITE_TMDB_API_KEY;
 
     useEffect(() => {
         setLoading(true)
-        fetch(`https://api.themoviedb.org/3/person/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`)
+        fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${api_key}&language=en-US`)
             .then((res) => res.json())
-            .then((json) => { setPopularPeople(json); console.log(json); setLoading(false) })
+            .then((json) => { setPopularTV(json); console.log(json); setLoading(false) })
     }, [])
-    document.title = "Top People"
+
+    document.title = 'Top TV'
+
     if (loading) {
         return (<Loading></Loading>)
     } else {
@@ -25,15 +29,15 @@ const People = () => {
                     <div className='min-w-full min-h-full bg-slate-800/90'>
                         <div
                             className='flex justify-center'>
-                            <h1 className='text-white text-2xl p-2'>Today's Top Actors</h1>
+                            <h1 className='text-white text-2xl p-2'>Today's Top TV</h1>
                         </div>
                         <ul className='flex flex-wrap justify-center box-border'>
-                            {popularPeople.results.map(person => {
+                            {popularTV.results.map(tv => {
                                 return (
                                     <ResultCard
-                                        result={person}
-                                        category={'people'}
-                                        img_path={person.profile_path} />
+                                        result={tv}
+                                        category={'tvshows'}
+                                        img_path={tv.poster_path} />
                                 )
                             })}
                         </ul>
@@ -44,4 +48,4 @@ const People = () => {
     }
 }
 
-export default People
+export default TVShows
