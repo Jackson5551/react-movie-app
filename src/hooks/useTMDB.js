@@ -4,8 +4,6 @@ const baseUrl = 'https://api.themoviedb.org/3/'
 const baseUrlImgOriginal = ''
 const baseUrlImageW500 = ''
 
-const apiKey = process.env.REACT_APP_TMDB_API_KEY
-
 const useTMDb = ({ what, states }) => {
     useEffect(()=>{
         what.forEach((url,i) => {
