@@ -8,9 +8,11 @@ const Collection = () => {
   const [loading, setLoading] = useState(true)
   const { collectionId } = useParams()
 
+  const api_key = import.meta.env.VITE_TMDB_API_KEY;
+
   useEffect(() => {
     setLoading(true)
-    fetch(`https://api.themoviedb.org/3/collection/${collectionId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`)
+    fetch(`https://api.themoviedb.org/3/collection/${collectionId}?api_key=${api_key}&language=en-US`)
       .then((res) => res.json())
       .then((json) => { setCollectionData(json); setLoading(false); console.log(json) })
   }, [collectionId])

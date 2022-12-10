@@ -7,6 +7,9 @@ import { SearchQueryContext } from '../../context/SearchQueryContext'
 const MovieApp = () => {
   const navigate = useNavigate()
 
+  const api_key = import.meta.env.VITE_TMDB_API_KEY;
+
+
   const [query, setQuery] = useState('')
   const [searchCategory, setSearchCategory] = useState('multi')
 

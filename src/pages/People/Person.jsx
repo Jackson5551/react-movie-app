@@ -9,12 +9,14 @@ const Person = () => {
     const [loading, setLoading] = useState(true)
     let { personId } = useParams()
 
+    const api_key = import.meta.env.VITE_TMDB_API_KEY;
+
     useEffect(() => {
         setLoading(true)
-        fetch(`https://api.themoviedb.org/3/person/${personId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`)
+        fetch(`https://api.themoviedb.org/3/person/${personId}?api_key=${api_key}&language=en-US`)
             .then((res) => res.json())
             .then((json) => { setPersonData(json); console.log(json) })
-        fetch(`https://api.themoviedb.org/3/person/${personId}/combined_credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`)
+        fetch(`https://api.themoviedb.org/3/person/${personId}/combined_credits?api_key=${api_key}&language=en-US`)
             .then((res) => res.json())
             .then((json) => { setCredits(json); setLoading(false); console.log(json) })
     }, [personId])

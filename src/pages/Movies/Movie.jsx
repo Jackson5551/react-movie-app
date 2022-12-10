@@ -15,23 +15,26 @@ const Movie = () => {
     const [credits, setCredits] = useState(null)
     const [loading, setLoading] = useState(true)
 
+    const api_key = import.meta.env.VITE_TMDB_API_KEY;
+
+
     let { movieId } = useParams()
 
     useEffect(() => {
         setLoading(true)
-        fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`)
+        fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${api_key}&language=en-US`)
             .then((res) => res.json())
             .then((json) => { setMovieData(json); console.log(json) })
-        fetch(`https://api.themoviedb.org/3/movie/${movieId}/release_dates?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`)
+        fetch(`https://api.themoviedb.org/3/movie/${movieId}/release_dates?api_key=${api_key}&language=en-US`)
             .then((res) => res.json())
             .then((json) => { setContentRatings(json.results); console.log(json.results) })
-        fetch(`https://api.themoviedb.org/3/movie/${movieId}/watch/providers?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&locale=US`)
+        fetch(`https://api.themoviedb.org/3/movie/${movieId}/watch/providers?api_key=${api_key}&language=en-US&locale=US`)
             .then((res) => res.json())
             .then((json) => { setWatchProviders(json.results.US); console.log(json.results.US) })
-        fetch(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&locale=US`)
+        fetch(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${api_key}&language=en-US&locale=US`)
             .then((res) => res.json())
             .then((json) => { setRecommendations(json.results); console.log(json.results) })
-        fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&locale=US`)
+        fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${api_key}&language=en-US&locale=US`)
             .then((res) => res.json())
             .then((json) => { setCredits(json); setLoading(false); console.log(json) })
 
