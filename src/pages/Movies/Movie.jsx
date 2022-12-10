@@ -6,7 +6,6 @@ import Loading from '../../Loading'
 import { formatTime } from '../../utils/formatTime'
 import { formatCurrency } from '../../utils/formatCurrency'
 import Navbar from '../../components/Navbar'
-import useTMDb from '../../hooks/useTMDb'
 
 const Movie = () => {
     const [movieData, setMovieData] = useState({})
