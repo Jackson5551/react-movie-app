@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import Loading from '../../Loading'
 import Navbar from '../../components/Navbar'
 import Pagination from './Pagination'
@@ -7,7 +7,6 @@ import Pagination from './Pagination'
 const Results = () => {
     const pageNumberLimit = 5
     const [searchData, setSearchData] = useState([])
-    const [searchQuery, setSearchQuery] = useState('')
     const [loading, setLoading] = useState(true)
     const [currentPage, setCurrentPage] = useState(1)
     const [maxPageLimit, setMaxPageLimit] = useState(5)
@@ -16,24 +15,14 @@ const Results = () => {
     const api_key = import.meta.env.VITE_TMDB_API_KEY;
 
     let { query, searchCategory } = useParams()
-    let navigate = useNavigate()
     useEffect(() => {
         setLoading(true)
         setCurrentPage(1)
-
-        // if (searchQuery !== query && currentPage !== 1) {
-        //     setCurrentPage(1);
         setMaxPageLimit(5);
         setMinPageLimit(0);
-        //     setSearchQuery(query)
-        // }
-        // setSearchQuery(query)
         fetch(`https://api.themoviedb.org/3/search/${searchCategory}?api_key=${api_key}&include_adult=false&query=${query}&page=1`)
             .then((res) => res.json())
             .then((json) => { setSearchData(json); setLoading(false); console.log(json) })
-        // if (query !== searchQuery) {
-        //     setSearchQuery(query)
-        // }
     }, [query, searchCategory])
     useEffect(() => {
         setLoading(true)
@@ -60,7 +49,6 @@ const Results = () => {
             setMinPageLimit(minPageLimit + pageNumberLimit)
         }
         setCurrentPage(prev => prev + 1)
-        // navigate(`/search/${query}/${+page+1}`)
     }
     const onGotoFirstPageClick = () => {
         setMaxPageLimit(5)
@@ -77,7 +65,6 @@ const Results = () => {
         currentPage,
         maxPageLimit,
         minPageLimit,
-        // response: searchData
         searchData
     }
     console.log(paginationAttribs)
